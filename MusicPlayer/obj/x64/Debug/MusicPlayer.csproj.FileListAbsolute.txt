@@ -1,0 +1,12 @@
+C:\Users\Administrator\Downloads\MusicPlayer\obj\x64\Debug\MusicPlayer.csprojAssemblyReference.cache
+C:\Users\Administrator\Downloads\MusicPlayer\obj\x64\Debug\Interop.WMPLib.dll
+C:\Users\Administrator\Downloads\MusicPlayer\obj\x64\Debug\AxInterop.WMPLib.dll
+C:\Users\Administrator\Downloads\MusicPlayer\obj\x64\Debug\MusicPlayer.csproj.ResolveComReference.cache
+C:\Users\Administrator\Downloads\MusicPlayer\obj\x64\Debug\musicPlayer.BTMForm.resources
+C:\Users\Administrator\Downloads\MusicPlayer\obj\x64\Debug\音乐播放器.Form1.resources
+C:\Users\Administrator\Downloads\MusicPlayer\obj\x64\Debug\音乐播放器.Form3.resources
+C:\Users\Administrator\Downloads\MusicPlayer\obj\x64\Debug\musicPlayer.Form2.resources
+C:\Users\Administrator\Downloads\MusicPlayer\obj\x64\Debug\音乐播放器.Properties.Resources.resources
+C:\Users\Administrator\Downloads\MusicPlayer\obj\x64\Debug\musicPlayer.TMForm.resources
+C:\Users\Administrator\Downloads\MusicPlayer\obj\x64\Debug\MusicPlayer.csproj.GenerateResource.cache
+C:\Users\Administrator\Downloads\MusicPlayer\obj\x64\Debug\MusicPlayer.csproj.CoreCompileInputs.cache

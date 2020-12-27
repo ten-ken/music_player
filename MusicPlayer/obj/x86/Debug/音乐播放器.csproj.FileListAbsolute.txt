@@ -1,0 +1,44 @@
+D:\C# 窗体应用程序\自练\音乐播放器\bin\Debug\音乐播放器.exe
+D:\C# 窗体应用程序\自练\音乐播放器\bin\Debug\音乐播放器.pdb
+D:\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\音乐播放器.Form1.resources
+D:\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\音乐播放器.Properties.Resources.resources
+D:\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\音乐播放器.exe
+D:\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\音乐播放器.pdb
+D:\C# 窗体应用程序\自练\音乐播放器\bin\Debug\Interop.WMPLib.dll
+D:\C# 窗体应用程序\自练\音乐播放器\bin\Debug\AxInterop.WMPLib.dll
+D:\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\Interop.WMPLib.dll
+D:\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\AxInterop.WMPLib.dll
+D:\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\音乐播放器.csproj.ResolveComReference.cache
+D:\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\音乐播放器.Form2.resources
+H:\学习资料\C# 窗体应用程序\自练\音乐播放器\bin\Debug\音乐播放器.exe
+H:\学习资料\C# 窗体应用程序\自练\音乐播放器\bin\Debug\音乐播放器.pdb
+H:\学习资料\C# 窗体应用程序\自练\音乐播放器\bin\Debug\Interop.WMPLib.dll
+H:\学习资料\C# 窗体应用程序\自练\音乐播放器\bin\Debug\AxInterop.WMPLib.dll
+H:\学习资料\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\Interop.WMPLib.dll
+H:\学习资料\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\AxInterop.WMPLib.dll
+H:\学习资料\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\音乐播放器.csproj.ResolveComReference.cache
+H:\学习资料\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\音乐播放器.Form1.resources
+H:\学习资料\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\音乐播放器.Form2.resources
+H:\学习资料\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\音乐播放器.Properties.Resources.resources
+H:\学习资料\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\音乐播放器.csproj.GenerateResource.Cache
+H:\学习资料\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\音乐播放器.exe
+H:\学习资料\C# 窗体应用程序\自练\音乐播放器\obj\x86\Debug\音乐播放器.pdb
+E:\projectpath\csharp-code\音乐播放器\bin\Debug\音乐播放器.exe
+E:\projectpath\csharp-code\音乐播放器\bin\Debug\音乐播放器.pdb
+E:\projectpath\csharp-code\音乐播放器\bin\Debug\Interop.WMPLib.dll
+E:\projectpath\csharp-code\音乐播放器\bin\Debug\AxInterop.WMPLib.dll
+E:\projectpath\csharp-code\音乐播放器\obj\x86\Debug\音乐播放器.csprojAssemblyReference.cache
+E:\projectpath\csharp-code\音乐播放器\obj\x86\Debug\Interop.WMPLib.dll
+E:\projectpath\csharp-code\音乐播放器\obj\x86\Debug\AxInterop.WMPLib.dll
+E:\projectpath\csharp-code\音乐播放器\obj\x86\Debug\音乐播放器.csproj.ResolveComReference.cache
+E:\projectpath\csharp-code\音乐播放器\obj\x86\Debug\音乐播放器.Form1.resources
+E:\projectpath\csharp-code\音乐播放器\obj\x86\Debug\音乐播放器.Form2.resources
+E:\projectpath\csharp-code\音乐播放器\obj\x86\Debug\音乐播放器.Properties.Resources.resources
+E:\projectpath\csharp-code\音乐播放器\obj\x86\Debug\音乐播放器.csproj.GenerateResource.cache
+E:\projectpath\csharp-code\音乐播放器\obj\x86\Debug\音乐播放器.csproj.CoreCompileInputs.cache
+E:\projectpath\csharp-code\音乐播放器\obj\x86\Debug\音乐播放器.exe
+E:\projectpath\csharp-code\音乐播放器\obj\x86\Debug\音乐播放器.pdb
+E:\projectpath\csharp-code\音乐播放器\obj\x86\Debug\音乐播放器.Form3.resources
