@@ -117,7 +117,7 @@ namespace KenMusicPlayer
             this.tsmiClear.Name = "tsmiClear";
             this.tsmiClear.Size = new System.Drawing.Size(162, 22);
             this.tsmiClear.Text = "清空(&C)";
-            this.tsmiClear.Click += new System.EventHandler(this.tsmiClear_Click);
+            this.tsmiClear.Click += new System.EventHandler(this.ListViewClear_Click);
             // 
             // tsmiXuanXiang
             // 

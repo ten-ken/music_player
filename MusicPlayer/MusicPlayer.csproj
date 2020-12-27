@@ -147,9 +147,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\liqin.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\bg_gray.png" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +187,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bg_light_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg_s_blue.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

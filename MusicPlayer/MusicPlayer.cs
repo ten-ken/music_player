@@ -29,6 +29,18 @@ namespace KenMusicPlayer
         private Point closePoint;//关闭按钮的位置
         private Size dfSize;//最初的位置
 
+
+        //声音
+        SoundPlayer player = new SoundPlayer();
+        Dictionary<string, string> dic = new Dictionary<string, string>();
+
+        //播放列表
+        Dictionary<string, IWMPMedia> playListDict = new Dictionary<string, IWMPMedia>();
+
+        List<string> al = new List<string>(); //当前歌词时间表     
+
+        IWMPMedia media;
+
         /*
     *下面这一大段API调用，主要是用来设置歌词窗口的滚动条的
     *但其实后面，我并没有怎么用到，只是在将滚动条滚动到底部时，用了一下
@@ -83,70 +95,68 @@ namespace KenMusicPlayer
            
         }
 
-        
 
-        /// <summary>
-        /// 改方法也是提供给透明歌词窗口用的，用来修改半透明窗体的位置，是透明歌词窗口和半透明窗体始终重合
-        /// </summary>
-        /// <param name="pos"></param>
-        public void moveTmform(Point pos)
-        {
-            this.btmForm.Location = pos;
-        }
-
-        SoundPlayer player = new SoundPlayer();
-        Dictionary<string, string> dic = new Dictionary<string, string>();
-
-        //播放列表
-        Dictionary<string, IWMPMedia> playListDict = new Dictionary<string, IWMPMedia>();
-
-        List<string> al = new List<string>(); //当前歌词时间表     
-
-        IWMPMedia media;
         public MusicPlayer()
         {
+            this.StartPosition = FormStartPosition.CenterScreen;//窗口居中显示
             InitializeComponent();
         }
 
 
         private void MusicPlayer_Load(object sender, EventArgs e)
         {
-            bool flag = false;
-            string folder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bgImages");
-            DirectoryInfo root = new DirectoryInfo(folder);
-            FileInfo[] files = root.GetFiles();
-            string fileName;
-            for (int i = 0; i < files.Length; i++)
+            InitLoad();
+        }
+
+
+        /// <summary>
+        ///  初始化 加载播放列表 如歌词 背景图 定时器等等
+        /// </summary>
+        private void InitLoad()
+        {
+            try
             {
-                fileName = files[i].Name.ToLower();
-                if (fileName.EndsWith(".png") || fileName.EndsWith(".jpeg") || fileName.EndsWith(".jpg"))
+                bool flag = false;
+                string folder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bgImages");
+                DirectoryInfo root = new DirectoryInfo(folder);
+                FileInfo[] files = root.GetFiles();
+                string fileName;
+                for (int i = 0; i < files.Length; i++)
                 {
-                    if (!flag)
+                    fileName = files[i].Name.ToLower();
+                    if (fileName.EndsWith(".png") || fileName.EndsWith(".jpeg") || fileName.EndsWith(".jpg"))
                     {
-                        imageList = new List<string>();
-                        this.pictureBox1.Image = Image.FromFile(files[i].FullName);
+                        if (!flag)
+                        {
+                            imageList = new List<string>();
+                            this.pictureBox1.Image = Image.FromFile(files[i].FullName);
+                        }
+                        imageList.Add(files[i].FullName);
+                        flag = true;
                     }
-                    imageList.Add(files[i].FullName);
-                    flag = true;
                 }
+
+                playerType.Text = playerType.Items[0].ToString();//默认第一个
+                closePoint = this.skinButtonClose.Location;
+                dfSize = this.Size;
+                richTextBox1.BackColor = this.TransparencyKey;
+                skinComboBoxFontName.Text = skinComboBoxFontName.Items[0].ToString();//默认第一个
+                skinComboBoxFontSize.Text = skinComboBoxFontSize.Items[0].ToString();//默认第一个
+                ComboBoxSkinSelect.Text = ComboBoxSkinSelect.Items[0].ToString();//默认第一个
+                                                                                 //this.BackPalace = Image.FromFile(ComboBoxSkinSelect.Items[0].ToString());//默认第一个
+
+                lvDetail.AllowDrop = true;
+                lvDetail.View = View.Details;
+                lvDetail.DragEnter += Files_DragEnter;//对象拖拽事件
+                lvDetail.DragDrop += Files_DragDrop;//拖拽操作完成事件
+                                                    //wmp.OpenStateChange += WMP_OpenStateChange;
+                wmp.PlayStateChange += WMP_PlayStateChange;
+                timerImgs.Start();
             }
-
-            playerType.Text = playerType.Items[0].ToString();//默认第一个
-            closePoint = this.skinButtonClose.Location;
-            dfSize = this.Size;
-            richTextBox1.BackColor = this.TransparencyKey;
-            skinComboBoxFontName.Text = skinComboBoxFontName.Items[0].ToString();//默认第一个
-            skinComboBoxFontSize.Text = skinComboBoxFontSize.Items[0].ToString();//默认第一个
-            ComboBoxSkinSelect.Text = ComboBoxSkinSelect.Items[0].ToString();//默认第一个
-            //this.BackPalace = Image.FromFile(ComboBoxSkinSelect.Items[0].ToString());//默认第一个
-
-            lvDetail.AllowDrop = true;
-            lvDetail.View = View.Details;
-            lvDetail.DragEnter += Files_DragEnter;//对象拖拽事件
-            lvDetail.DragDrop += Files_DragDrop;//拖拽操作完成事件
-            //wmp.OpenStateChange += WMP_OpenStateChange;
-            wmp.PlayStateChange += WMP_PlayStateChange;
-            timerImgs.Start();
+            catch (Exception ex)
+            {
+                Console.WriteLine("错误:" + ex.Message);
+            }
         }
 
         /// <summary>
@@ -187,10 +197,6 @@ namespace KenMusicPlayer
             loadLrc();
         }
 
-        private void WMP_OpenStateChange(object sender, _WMPOCXEvents_OpenStateChangeEvent e)
-        {
-            Console.WriteLine("");
-        }
 
         /// <summary>
         /// 拖拽操作完成事件
@@ -283,7 +289,6 @@ namespace KenMusicPlayer
             string fileName, fileExtension, fileSize, temp;
             FileInfo fi = null;
             ListViewItem lvi = null;
-
             openFileDialog1.Multiselect = true;
             openFileDialog1.Filter = "mp3文件(*.mp3)|*.mp3|wav文件(*.wav)|*.wav|wma文件(*.wma)|*.wma";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -292,44 +297,9 @@ namespace KenMusicPlayer
                 wmp.settings.setMode("shuffle", false);
                 foreach (string filePath in openFileDialog1.FileNames)
                 {
-                    fi = new FileInfo(filePath);
-                    temp = filePath.Remove(filePath.LastIndexOf('.'));
-                    fileName = temp.Remove(0, temp.LastIndexOf('\\') + 1);
-                    fileExtension = filePath.Remove(0, filePath.LastIndexOf('.'));
-                    fileSize = (fi.Length / 1024).ToString() + "KB";
-
-                    lvi = new ListViewItem();
-                    lvi.Text = index++.ToString();
-                    lvi.SubItems.AddRange(new string[] { fileName, fileExtension, fileSize, filePath });
-
-                    if (lvDetail.Items.Count > 0)
+                    if (!dic.ContainsKey(filePath))
                     {
-                        if (!dic.ContainsKey(filePath))
-                        {
-                            wmp.Ctlcontrols.stop();
-                            lvDetail.Items.Add(lvi);
-                            dic.Add(filePath, fileName);
-                            //添加到播放列表
-                            media = wmp.newMedia(filePath);
-                            string geciPath = Path.Combine(Path.GetDirectoryName(filePath), Path.GetFileNameWithoutExtension(filePath) + ".lrc");
-                            wmp.currentPlaylist.insertItem(listIndex++, media);
-                            playListDict.Add(filePath, media);
-                        }
-                        else
-                        {
-                            index--;
-                            //MessageBox.Show("文件已存在！");
-                        }
-                    }
-                    else
-                    {
-                        wmp.Ctlcontrols.stop();
-                        lvDetail.Items.Add(lvi);
-                        dic.Add(filePath, fileName);
-                        //添加到播放列表
-                        media = wmp.newMedia(filePath);
-                        wmp.currentPlaylist.insertItem(listIndex++, media);
-                        playListDict.Add(filePath, media);
+                        InsertPlayList(out fileName, out fileExtension, out fileSize, out temp, out fi, out lvi, filePath);
                     }
                 }
             }
@@ -338,7 +308,7 @@ namespace KenMusicPlayer
         /// <summary>
         /// 清除列表
         /// </summary>
-        private void tsmiClear_Click(object sender, EventArgs e)
+        private void ListViewClear_Click(object sender, EventArgs e)
         {
             lvDetail.Items.Clear();
         }
@@ -779,7 +749,7 @@ namespace KenMusicPlayer
                         this.BorderPalace = kenMusicPlayer.Properties.Resources.bg_black;
                         break;
                     case "天蓝色":
-                        this.BorderPalace = kenMusicPlayer.Properties.Resources.bg_s_blue;
+                        this.BorderPalace = kenMusicPlayer.Properties.Resources.bg_light_blue;
                         break;
                     case "墨绿色":
                         this.BorderPalace = kenMusicPlayer.Properties.Resources.bg_green;
@@ -829,6 +799,16 @@ namespace KenMusicPlayer
                 Console.WriteLine("异常:" + ex.Message);
             }
 
+        }
+
+
+        /// <summary>
+        /// 改方法也是提供给透明歌词窗口用的，用来修改半透明窗体的位置，是透明歌词窗口和半透明窗体始终重合
+        /// </summary>
+        /// <param name="pos"></param>
+        public void moveTmform(Point pos)
+        {
+            this.btmForm.Location = pos;
         }
     }
 }
