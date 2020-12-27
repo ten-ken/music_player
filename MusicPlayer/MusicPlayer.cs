@@ -258,7 +258,9 @@ namespace KenMusicPlayer
             lvDetail.Items.Add(listViewItem);
             //添加到播放列表
             media = wmp.newMedia(filePath);
-            wmp.currentPlaylist.insertItem(listIndex++, media);
+            //listIndex++, 
+            //wmp.currentPlaylist.insertItem(media);
+            wmp.currentPlaylist.appendItem(media);
             playListDict.Add(filePath, media);
             //杜绝重复项
             dic.Add(filePath, fileName);
@@ -475,7 +477,107 @@ namespace KenMusicPlayer
         /// <param name="e"></param>
         private void ShowLineLrc(object sender, EventArgs e)
         {
+            this.label1.Text = this.wmp.Ctlcontrols.currentPositionString;
 
+            if (this.lrcForm == null)
+            {
+                this.lrcForm = new TMForm();
+
+                Point pos = this.Location;
+                pos.Y = lrcForm.Location.Y + lrcForm.Height;
+                this.Location = pos;
+
+                this.btmForm = new BTMForm();
+                MusicPlayer mainForm = (MusicPlayer)this.Owner;
+                btmForm.Location = pos;
+                
+                this.lrcForm.Owner = this;
+                this.btmForm.Owner = this;
+                this.btmForm.Hide();
+                this.lrcForm.Show();
+            }
+
+
+
+            if (this.wmp.currentMedia == null)
+            {
+                this.richTextBox1.Text = "";
+                return;
+            }
+
+
+            string durationString = this.wmp.currentMedia.durationString;
+            int trackBarValue = Convert.ToInt32(this.wmp.Ctlcontrols.currentPosition);
+            //this.trackBar1.Maximum = Convert.ToInt32(this.wmp.currentMedia.duration);
+            //this.trackBar1.Value = Convert.ToInt32(this.wmp.Ctlcontrols.currentPosition);
+
+            if (this.richTextBox1.Text != "歌词文件不存在" && this.richTextBox1.Text != "歌词文件内容为空")
+            {
+                int pos = al.IndexOf(trackBarValue.ToString());
+                bool isAr = this.richTextBox1.Text.Contains("歌手:");
+                bool isTi = this.richTextBox1.Text.Contains("歌名:");
+
+
+                if (pos >= 0)
+                {
+                    int n = isAr ? 1 : 0;
+                    int m = isTi ? 1 : 0;
+
+                    int height = 28 * (this.al.Count + m + n);
+                    int max = height - this.richTextBox1.Height;
+
+
+                    this.richTextBox1.SelectAll();
+                    this.richTextBox1.SelectionColor = Color.Black;
+                    this.richTextBox1.SelectionLength = 0;/**/
+
+                    int l = this.richTextBox1.Lines[pos + m + n].Length;
+                    this.richTextBox1.Select(this.richTextBox1.GetFirstCharIndexFromLine(pos + m + n), l);
+                    this.richTextBox1.SelectionColor = Color.OrangeRed;
+                    this.richTextBox1.SelectionLength = 0;
+                    //this.Text = GetScrollPos(this.richTextBox1.Handle, SB_VERT).ToString() + "-" + al.Count + "-" + this.richTextBox1.Height;
+
+                    if ((pos + m + n) * 28 <= max)
+                    {
+                        int start = this.richTextBox1.GetFirstCharIndexFromLine(pos + m + n);
+                        this.richTextBox1.SelectionStart = start;
+                        this.richTextBox1.ScrollToCaret();
+
+                    }
+                    else
+                    {
+                        //this.richTextBox1.Focus();
+                        SendMessage(this.richTextBox1.Handle, WM_VSCROLL, SB_BOTTOM, 0);
+                        UpdateWindow(this.richTextBox1.Handle);
+                        //this.richTextBox1.SelectionStart = this.richTextBox1.Text.Length;
+                        //this.richTextBox1.ScrollToCaret();
+                    }
+
+                    if (this.lrcForm != null)
+                    {
+                        string l1 = this.richTextBox1.Lines[pos + m + n];
+                        string l2;
+                        if ((pos + m + n) < this.richTextBox1.Lines.Length - 1)
+                        {
+                            l2 = this.richTextBox1.Lines[pos + m + n + 1];
+                        }
+                        else
+                        {
+                            l2 = "。。。。。";
+                        }
+
+                        this.lrcForm.setLrc(l1, l2, pos);
+                        //this.lrcForm.setLrc(ArrayList al,);
+
+                    }
+
+                }
+            }
+            //this.Text = this.trackBar1.Value.ToString();
+            /*if (trackBarValue >= (this.trackBar1.Maximum - 2))
+            {
+                this.PlayModeChange();
+            }*/
         }
 
         /// <summary>
@@ -598,6 +700,7 @@ namespace KenMusicPlayer
                     wmp.currentPlaylist.removeItem(playListDict[path]);
                     playListDict.Remove(path);
                     this.lvDetail.Items[index].Remove();
+                    dic.Remove(path);
                     wmp.Ctlcontrols.stop();
                 }
             }

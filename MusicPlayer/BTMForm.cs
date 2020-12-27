@@ -63,13 +63,13 @@ namespace KenMusicPlayer
 
         public BTMForm()
         {
-            MusicPlayer mainForm = (MusicPlayer)this.Owner;
+/*            MusicPlayer mainForm = (MusicPlayer)this.Owner;
             if (mainForm != null)
             {
                 Point pos = this.Location;
                 pos.Y = mainForm.Location.Y + mainForm.Height;
                 this.Location = pos;
-            }
+            }*/
             InitializeComponent();
         }
 
