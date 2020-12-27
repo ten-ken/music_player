@@ -65,11 +65,11 @@ namespace KenMusicPlayer
             this.skinButton2 = new CCWin.SkinControl.SkinButton();
             this.skinButton1 = new CCWin.SkinControl.SkinButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.richTextBox1 = new KenMusicPlayer.KenRichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.wmp = new AxWMPLib.AxWindowsMediaPlayer();
             this.timerImgs = new System.Windows.Forms.Timer(this.components);
             this.skinButtonClose = new CCWin.SkinControl.SkinButton();
+            this.richTextBox1 = new KenMusicPlayer.KenRichTextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -306,6 +306,7 @@ namespace KenMusicPlayer
             // skinComboBoxFontSize
             // 
             this.skinComboBoxFontSize.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.skinComboBoxFontSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.skinComboBoxFontSize.FormattingEnabled = true;
             this.skinComboBoxFontSize.Items.AddRange(new object[] {
             "23",
@@ -327,6 +328,7 @@ namespace KenMusicPlayer
             // skinComboBoxFontName
             // 
             this.skinComboBoxFontName.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.skinComboBoxFontName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.skinComboBoxFontName.FormattingEnabled = true;
             this.skinComboBoxFontName.Items.AddRange(new object[] {
             "楷体",
@@ -465,17 +467,6 @@ namespace KenMusicPlayer
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Font = new System.Drawing.Font("楷体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.richTextBox1.Size = new System.Drawing.Size(590, 454);
-            this.richTextBox1.TabIndex = 7;
-            this.richTextBox1.Text = "";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -525,6 +516,17 @@ namespace KenMusicPlayer
             this.skinButtonClose.Text = "X";
             this.skinButtonClose.UseVisualStyleBackColor = false;
             this.skinButtonClose.Click += new System.EventHandler(this.skinButtonClose_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Font = new System.Drawing.Font("楷体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.richTextBox1.Size = new System.Drawing.Size(590, 454);
+            this.richTextBox1.TabIndex = 7;
+            this.richTextBox1.Text = "";
             // 
             // MusicPlayer
             // 

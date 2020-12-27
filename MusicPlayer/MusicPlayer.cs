@@ -749,7 +749,7 @@ namespace KenMusicPlayer
         {
             if (this.lrcForm != null)
             {
-                this.lrcForm.ChangeLabelFont(this.skinComboBoxFontName.SelectedText, this.skinComboBoxFontSize.SelectedText);
+                this.lrcForm.ChangeLabelFont(this.skinComboBoxFontName.SelectedItem.ToString(), this.skinComboBoxFontSize.SelectedItem.ToString());
 
             }
         }
@@ -763,7 +763,7 @@ namespace KenMusicPlayer
         {
             if (this.lrcForm != null)
             {
-                this.lrcForm.ChangeLabelFont(this.skinComboBoxFontName.SelectedText, this.skinComboBoxFontSize.SelectedText);
+                this.lrcForm.ChangeLabelFont(this.skinComboBoxFontName.SelectedItem.ToString(), this.skinComboBoxFontSize.SelectedItem.ToString());
 
             }
         }
