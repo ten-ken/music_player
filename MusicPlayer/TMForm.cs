@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-/*作者：向往那片天空
- *联系邮箱：250023777@qq.com
- *打个广告：精品女装https://shop130840104.taobao.com，大家支持一下。^-^^-^^-^^-^
- *由于精力问题，代码只注释了一部分，大家有哪里不懂的，就邮箱或者QQ联系我吧
+/*作者：ken
+ *联系邮箱：1244530741@qq.com
+ *博客地址1-csdn：https://blog.csdn.net/jikuicui7402 
+ *博客地址2-掘金：https://juejin.cn/user/3940246036173485
  */
 
 namespace KenMusicPlayer
