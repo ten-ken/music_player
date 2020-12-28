@@ -14,6 +14,11 @@ using System.Drawing.Drawing2D;
 using CCWin;
 
 
+/*作者：ken
+ *联系邮箱：1244530741@qq.com
+ *博客地址1-csdn：https://blog.csdn.net/jikuicui7402 
+ *博客地址2-掘金：https://juejin.cn/user/3940246036173485
+ */
 namespace KenMusicPlayer
 {
     public partial class MusicPlayer : Skin_DevExpress
